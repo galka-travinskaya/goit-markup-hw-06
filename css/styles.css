@@ -309,24 +309,6 @@ address {
     text-align: center
 }
 
-.button-footer {
-    display: flex;
-    min-width: 200px;
-    border-radius: 4px;
-    padding: 10px 32px;
-    border: 1px solid transparent;
-
-    background-color: var(--accent-color);
-    color: var(--primary-white-color);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.87;
-    letter-spacing: 0.06em;
-    text-align: center;
-
-    
-}
-
 .filters {
     display: inline-block;
     display: flex;
@@ -748,8 +730,6 @@ address {
     color: var(--primary-white-color)
 }
 
-
-
 .footer-list {
     display: flex;
     align-items: center;
@@ -795,14 +775,19 @@ address {
     padding: 0;
 }
 
-.subscribe label {
+/*.subscribe label {
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.6);
-}
+}*/
 
 .subscribe input {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.6);
     margin-right: 12px;
     padding: 15px 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -811,13 +796,50 @@ address {
     background-color: var(--background-footer-color);
 }
 
-.icon-send {
-    display: inline-block;
+.button-footer {
+    display: inline-flex;
+    /*min-width: 200px;*/
+    border-radius: 4px;
+    padding: 10px 32px;
+    border: 1px solid transparent;
+
+    background-color: var(--accent-color);
+    color: var(--primary-white-color);
+    background-size: contain;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.87;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+/*.icon-send {
+    display: flex;
     content: "";
     width: 24px;
     height: 24px;
     margin-left: 10px;
     justify-content: center;
+    align-items: center;
+    background-size: contain;
+}*/
+/*<svg class="icon-send">
+                                    <use href="./images/sprite.svg#icon-icon_send"></use>
+                                </svg>*/
+.button-footer::after {
+    display: inline-block;
+    background-size: contain;
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    justify-content: center;
+    background-image: url(../images/icon_send.svg);
+    transition: transform 250ms;
+}
+
+.button-footer:hover::after {
+    transform: translateY(-37px);
 }
 
 .backdrop {
@@ -827,18 +849,23 @@ address {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    /*transition: transform 250ms var(--transition-timing-function);*/
 }
 
 .backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
+    
 }
 
-/*.modal {
+
+
+.form {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: transform 250ms var(--transition-timing-function);
 
     width: 528px;
     min-height: 581px;
@@ -849,23 +876,31 @@ address {
     background-color: var(--primary-white-color);
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-}*/
+}
 
-.form {
+.close-popup {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 528px;
-    /*min-height: 581px;*/
-    padding-left: 41px;
-    padding-right: 39px;
-    padding-bottom: 40px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
     background-color: var(--primary-white-color);
-    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+    background-size: contain;
+}
+
+.icon-close {
+    /*display: flex;
+    justify-content: center;
+    align-items: center;*/
+    width: 18px;
+    height: 18px;
+    fill: var(--logo-black-color);
+    /*background-size: contain;*/
 }
 
 .modal-title {
@@ -875,34 +910,116 @@ address {
     margin-bottom: 30px;
 
     font-size: 20px;
-    /*line-height: 0.86px;*/
+    line-height: 0.86px;
     letter-spacing: 0.03em;
     color: var(--title-text-color);
 }
 
 .form-field {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 28px;
 }
 
-.form-field input {
+.form-input {
+    width: 100%;
     margin: 0;
-    padding: 12px 16px;
+    padding: 12px 18px;
+    padding-left: 42px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
+}
+
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+    color: var(--accent-color);
+    transform: translateY(-30px) translateX(-26px);
+}
+
+.form-field input:hover,
+.form-field input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.form-field:focus-within {
+    color: var(--accent-color);
 }
 
 .form-label {
+    position: absolute;
+    top: 50%;
+    left: 42px;
+    transform: translateY(-50%);
     line-height: 1.14px;
-    /*letter-spacing: 0.01em;*/
-    /*color: var(--primary-text-color);*/
+    color: var(--primary-text-color);
+    letter-spacing: 0.01em;
+
+    transition: transform 250ms;
 }
 
-.form-field textarea {
+.icon-modal {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    color: var(--title-text-color);
+}
+
+/*.form-input:focus ~ .icon-modal {
+    fill: var(--accent-color);
+}*/
+
+.form-field:focus-within > .icon-modal {
+    fill: var(--accent-color);
+}
+
+.textarea-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    transition: transform 250ms linear;
+}
+
+.form-textarea {
+    resize: none;
+    width: 448px;
+    min-height: 120px;
     padding: 12px 16px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
+}
+
+.label-textarea {
+    position: absolute;
+    top: 10%;
+    left: 16px;
+    transform: translateY(-50%);
+    line-height: 1.14px;
+    color: var(--primary-text-color);
+    letter-spacing: 0.01em;
+    transition: transform 250ms;
+}
+
+.form-textarea:focus + .label-textarea,
+.form-textarea:not(:placeholder-shown) + .label-textarea {
+    color: var(--accent-color);
+    transform: translateY(-30px);
+}
+
+.textarea-field textarea:hover,
+.textarea-field textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .agree {
@@ -912,12 +1029,52 @@ address {
     margin-bottom: 30px;
 }
 
-.agree input[type='checkbox'] {
+.checkbox {
+    /*-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;*/
+
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
-.agree label {
+.checkbox-label::before {
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+    margin-right: 7px;
+    content: "";
+    background-image: url(../images/check.svg);
+    border: 2px solid var(--title-text-color);
+    border-radius: 4px;
+    
+}
+
+.checkbox:checked + .checkbox-label::before {
+    background-color: #2196F3;
+    background-size: contain;
+    background-origin: border-box;
+    border-color: var(--accent-color);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
     margin-left: 8px;
     letter-spacing: 0.03em;
+}
+
+.checkbox-label a {
+    margin-left: 3px;
+    color: var(--accent-color);
+    text-decoration-line: underline;
 }
 
 .button-submit {
@@ -925,7 +1082,8 @@ address {
     min-width: 200px;
     border-radius: 4px;
 
-    /*margin-bottom: 30px;*/
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px 55px;
     border: 1px solid transparent;
 
@@ -941,18 +1099,7 @@ address {
 }
 
 
-/*.button-footer:after {
-    display: inline-block;
-    content: "";
-    width: 24px;
-    height: 24px;
-    margin-left: 10px;
-    justify-content: center;
-}*/
 
-/*.button-footer:hover icon-send{
-    transform: translateY(-37px);
-}*/
 
 
 
