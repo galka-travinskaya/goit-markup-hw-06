@@ -869,9 +869,7 @@ address {
 
     width: 528px;
     min-height: 581px;
-    padding-left: 41px;
-    padding-right: 39px;
-    padding-bottom: 40px;
+    padding: 40px 40px;
 
     background-color: var(--primary-white-color);
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
@@ -883,8 +881,8 @@ address {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 8px;
     width: 30px;
     height: 30px;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -893,14 +891,18 @@ address {
     background-size: contain;
 }
 
-.icon-close {
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
+/*.icon-close {
+    
     width: 18px;
     height: 18px;
     fill: var(--logo-black-color);
-    /*background-size: contain;*/
+    background-size: contain;
+}*/
+
+.close-popup:hover svg,
+.close-popup:focus svg {
+    fill: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 .modal-title {
@@ -992,7 +994,7 @@ address {
 .form-textarea {
     resize: none;
     width: 448px;
-    min-height: 120px;
+    max-height: 120px;
     padding: 12px 16px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
@@ -1000,7 +1002,7 @@ address {
 
 .label-textarea {
     position: absolute;
-    top: 10%;
+    top: 20px;
     left: 16px;
     transform: translateY(-50%);
     line-height: 1.14px;
@@ -1053,7 +1055,7 @@ address {
     content: "";
     background-image: url(../images/check.svg);
     border: 2px solid var(--title-text-color);
-    border-radius: 4px;
+    border-radius: 1px;
     
 }
 
